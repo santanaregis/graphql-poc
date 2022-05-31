@@ -15,7 +15,7 @@ class SimpleQuery : Query {
     fun notPartOfSchema() = "ignore me!"
 
     @GraphQLDescription("Verifica se número é par")
-    fun doSomething(
+    fun verifyNumber(
         @GraphQLDescription("Número a ser verificado")
         value: Int
     ): Boolean = value % 2 == 0
