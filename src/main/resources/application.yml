@@ -1,0 +1,13 @@
+graphql:
+  packages:
+    - "example.server"
+  subscriptions:
+    # Send a ka message every 1000 ms (1 second)
+    keepAliveInterval: 10000 #10 seconds
+
+
+client:
+  viacep:
+    url: https://viacep.com.br/ws/
+  ibge:
+    url: https://servicodados.ibge.gov.br/api/v1/
