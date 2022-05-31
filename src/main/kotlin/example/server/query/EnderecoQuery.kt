@@ -7,9 +7,7 @@ import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.server.operations.Query
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
-/**
- * Example queries.
- */
+
 @Component
 class EnderecoQuery(
     private val enderecoService: EnderecoService

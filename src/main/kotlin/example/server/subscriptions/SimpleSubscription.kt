@@ -17,9 +17,9 @@ class SimpleSubscription : Subscription {
 
     val logger: Logger = LoggerFactory.getLogger(SimpleSubscription::class.java)
 
-    @GraphQLDescription("Returns a random number every second")
+    @GraphQLDescription("Retorna um numero random a cada 3 segundos")
     fun counter(limit: Int? = null): Flux<Int> {
-        val flux = Flux.interval(Duration.ofSeconds(5)).map {
+        val flux = Flux.interval(Duration.ofSeconds(3)).map {
             val value = Random.nextInt()
             logger.info("Returning $value from counter")
             value
@@ -32,7 +32,7 @@ class SimpleSubscription : Subscription {
         }
     }
 
-    @GraphQLDescription("Returns a random number every second, errors if even")
+    @GraphQLDescription("Retorna um numero random a cada segundo, erro se número par")
     fun counterWithError(): Flux<Int> = Flux.interval(Duration.ofSeconds(1))
         .map {
             val value = Random.nextInt()
@@ -40,8 +40,5 @@ class SimpleSubscription : Subscription {
                 throw Exception("Value is even $value")
             } else value
         }
-
-    @GraphQLDescription("Returns stream of values")
-    fun flow(): Publisher<Int> = flowOf(1, 2, 4).asPublisher()
 
 }
