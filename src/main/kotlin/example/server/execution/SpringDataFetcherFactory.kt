@@ -36,7 +36,9 @@ class SpringDataFetcherFactory : DataFetcherFactory<Any?>, BeanFactoryAware {
     override fun get(environment: DataFetcherFactoryEnvironment?): DataFetcher<Any?> {
 
         // Strip out possible `Input` and `!` suffixes added to by the SchemaGenerator
-        val targetedTypeName = environment?.fieldDefinition?.type?.deepName?.removeSuffix("!")?.removeSuffix("Input")?.replace("[", "")?.replace("]", "")?.removeSuffix("!")
+        // remove all `!` to datafetcher object list.
+        // ex: can have [Distrito]DataFetcher(fetch a list) and also DistritoDataFetcher(fetch single object)
+        val targetedTypeName = environment?.fieldDefinition?.type?.deepName?.replace("!", "")?.removeSuffix("Input")
         return beanFactory.getBean("${targetedTypeName}DataFetcher") as DataFetcher<Any?>
     }
 }

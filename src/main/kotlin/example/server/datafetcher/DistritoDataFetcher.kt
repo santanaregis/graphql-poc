@@ -11,7 +11,7 @@ import org.springframework.beans.factory.BeanFactoryAware
 import org.springframework.stereotype.Component
 import java.util.concurrent.CompletableFuture
 
-@Component("DistritoDataFetcher")
+@Component("[Distrito]DataFetcher")
 class DistritoDataFetcher(val distritoService: DistritoService) : DataFetcher<CompletableFuture<List<Distrito>>>, BeanFactoryAware {
     private lateinit var beanFactory: BeanFactory
 
